@@ -49,204 +49,216 @@
         <div id="element"></div>
       </div>
 
-      <div id="panels">
-        <section id="fx" class="panel">
-          <h3>Layer Style</h3>
-          <nav>
-            <ul>
-              <li data-fx="drop_shadow">
-                <input type="checkbox" id="ds_enabled" />
-                <label for="ds_enabled">Drop Shadow</label>
-              </li>
-              <li data-fx="inner_shadow">
-                <input type="checkbox" id="ins_enabled" />
-                <label for="ins_enabled">Inner Shadow</label>
-              </li>
-              <li data-fx="stroke">
-                <input type="checkbox" id="str_enabled" />
-                <label for="str_enabled">Stroke</label>
-              </li>
-              <li data-fx="color_overlay">
-                <input type="checkbox" id="co_enabled" />
-                <label for="co_enabled">Color Overlay</label>
-              </li>
-              <li data-fx="pattern_overlay">
-                <input type="checkbox" id="po_enabled" />
-                <label for="po_enabled">Pattern Overlay</label>
-              </li>
-            </ul>
-          </nav>
-          <section id="properties">
-            <div id="drop_shadow" class="menu">
-              <fieldset>
-                <legend>Structure</legend>
-                <!--
-                <div class="field">
-                  <label>Blend Mode:</label>
-                  <select id="ds_blendmode">
-                    <option>Multiply</option>
-                  </select>
-                </div>
-                -->
-                <div class="field">
-                  <label>Opacity:</label>
-                  <input type="range" id="ds_opacity_range" value="75" />
-                  <!-- <input type="text" id="ds_opacity_num" /> -->
-                </div>
-                <!--
-                <div class="field">
-                  <label>Angle:</label>
-                  <input type="text" id="ds_angle_num" />
-                </div>
-                <div class="field">
-                  <label>Use global Light</label>
-                  <input type="checkbox" id="ds_global_light" checked />
-                </div>
-                -->
-                <div class="field">
-                  <label>Distance:</label>
-                  <input type="range" id="ds_distance_range" value="5" />
-                  <!-- <input type="text" id="ds_distance_num" /> -->
-                </div>
-                <div class="field">
-                  <label>Spread:</label>
-                  <input type="range" id="ds_spread_range" value="0" />
-                  <!-- <input type="text" id="ds_spread_num" /> -->
-                </div>
-                <div class="field">
-                  <label>Size:</label>
-                  <input type="range" id="ds_size_range" value="5" />
-                  <!-- ><input type="text" id="ds_size_num" /> -->
-                </div>
-              </fieldset>
-            </div>
-            <div id="inner_shadow" class="menu">
-              <fieldset>
-                <legend>Structure</legend>
-                <!--
-                <div class="field">
-                  <label>Blend Mode:</label>
-                  <select id="ins_blend_mode">
-                    <option>Multiply</option>
-                  </select>
-                </div>
-                -->
-                <div class="field">
-                  <label>Opacity:</label>
-                  <input type="range" id="ins_opacity_range" value="75" />
-                  <!-- <input type="text" id="ins_opacity_num" /> -->
-                </div>
-                <!--
-                <div class="field">
-                  <label>Angle:</label>
-                  <input type="text" id="ins_angle_num" />
-                </div>
-                <div class="field">
-                  <label>Use global Light</label>
-                  <input type="checkbox" id="ins_global_light" checked />
-                </div>
-                -->
-                <div class="field">
-                  <label>Distance:</label>
-                  <input type="range" id="ins_distance_range" value="5" />
-                  <!-- <input type="text" id="ins_distance_num" /> -->
-                </div>
-                <div class="field">
-                  <label>Choke:</label>
-                  <input type="range" id="ins_choke_range" value="0" />
-                  <!-- <input type="text" id="ins_choke_num" /> -->
-                </div>
-                <div class="field">
-                  <label>Size:</label>
-                  <input type="range" id="ins_size_range" value="5" />
-                  <!-- <input type="text" id="ins_size_num" /> -->
-                </div>
-              </fieldset>
-            </div>
-            <div id="stroke" class="menu">
-              <fieldset>
-                <legend>Structure</legend>
-                <div class="field">
-                  <label>Size:</label>
-                  <input type="range" id="str_size_range" value="3" />
-                  <!-- <input type="text" id="str_size_num" /> -->
-                </div>
-                <div class="field">
-                  <label>Position</label>
-                  <select id="str_position">
-                    <option value="outline">Outside</option>
-                    <option value="border">Inside</option>
-                    <!--<option>Center</option>-->
-                  </select>
-                </div>
-                <!--
-                <div class="field">
-                  <label>Blend Mode:</label>
-                  <select id="str_blendmode">
-                  </select>
-                </div>
-                -->
-                <div class="field">
-                  <label>Opacity:</label>
-                  <input type="range" id="str_opacity_range" value="100" />
-                  <!-- <input type="text" id="str_opacity_num" /> -->
-                </div>
-              </fieldset>
-            </div>
-            <div id="color_overlay" class="menu">
-              <fieldset>
-                <legend>Structure</legend>
-                <!--
-                <div class="field">
-                  <label>Blend Mode:</label>
-                  <select id="co_blendmode">
-                  </select>
-                </div>
-                -->
-                <div class="field">
-                  <label>Opacity:</label>
-                  <input type="range" id="co_opacity_range" value="100" />
-                  <!-- <input type="text" id="co_opacity_num" /> -->
-                </div>
-              </fieldset>
-            </div>
-            <div id="pattern_overlay" class="menu">
-              <fieldset>
-                <legend>Structure</legend>
-                <!--
-                <div class="field">
-                  <label>Blend Mode:</label>
-                  <select id="po_blendmode">
-                  </select>
-                </div>
-                -->
-                <!--
-                <div class="field">
-                  <label>Opacity:</label>
-                  <input type="range" id="po_opacity_range" value="100" />
-                  <input type="text" id="po_opacity_num" />
-                </div>
-                -->
-                <div class="field">
-                  <label>Pattern:</label>
-                  <select id="po_pattern">
-                    <option value="p1">Cross</option>
-                  </select>
-                </div>
-                <!--
-                <div class="field">
-                  <label>Scale:</label>
-                  <input type="range" id="po_scale_range" value="100" />
-                  <input type="text" id="po_scale_num" />
-                </div>
-                -->
-              </fieldset>
-            </div>
-          </section>
+      <section id="fx" class="panel">
+        <h3>Layer Style</h3>
+        <nav>
+          <ul>
+            <li data-fx="blending_options">
+              <input type="checkbox" id="bo" checked disabled />
+              <label for="bo">Blending Options</label>
+            </li>
+            <li data-fx="drop_shadow">
+              <input type="checkbox" id="ds_enabled" />
+              <label for="ds_enabled">Drop Shadow</label>
+            </li>
+            <li data-fx="inner_shadow">
+              <input type="checkbox" id="ins_enabled" />
+              <label for="ins_enabled">Inner Shadow</label>
+            </li>
+            <li data-fx="stroke">
+              <input type="checkbox" id="str_enabled" />
+              <label for="str_enabled">Stroke</label>
+            </li>
+            <li data-fx="color_overlay">
+              <input type="checkbox" id="co_enabled" />
+              <label for="co_enabled">Color Overlay</label>
+            </li>
+            <li data-fx="pattern_overlay">
+              <input type="checkbox" id="po_enabled" />
+              <label for="po_enabled">Pattern Overlay</label>
+            </li>
+          </ul>
+        </nav>
+        <section id="properties">
+          <div id="blending_options" class="menu">
+            <fieldset>
+              <legend>General</legend>
+              <div class="field">
+                <label>Opacity:</label>
+                <input type="range" id="bo_opacity_range" value="100" />
+                <!-- <input type="text" id="bo_opacity_num" /> -->
+              </div>
+            </fieldset>
+          </div>
+          <div id="drop_shadow" class="menu">
+            <fieldset>
+              <legend>Structure</legend>
+              <!--
+              <div class="field">
+                <label>Blend Mode:</label>
+                <select id="ds_blendmode">
+                  <option>Multiply</option>
+                </select>
+              </div>
+              -->
+              <div class="field">
+                <label>Opacity:</label>
+                <input type="range" id="ds_opacity_range" value="75" />
+                <!-- <input type="text" id="ds_opacity_num" /> -->
+              </div>
+              <!--
+              <div class="field">
+                <label>Angle:</label>
+                <input type="text" id="ds_angle_num" />
+              </div>
+              <div class="field">
+                <label>Use global Light</label>
+                <input type="checkbox" id="ds_global_light" checked />
+              </div>
+              -->
+              <div class="field">
+                <label>Distance:</label>
+                <input type="range" id="ds_distance_range" value="5" />
+                <!-- <input type="text" id="ds_distance_num" /> -->
+              </div>
+              <div class="field">
+                <label>Spread:</label>
+                <input type="range" id="ds_spread_range" value="0" />
+                <!-- <input type="text" id="ds_spread_num" /> -->
+              </div>
+              <div class="field">
+                <label>Size:</label>
+                <input type="range" id="ds_size_range" value="5" />
+                <!-- ><input type="text" id="ds_size_num" /> -->
+              </div>
+            </fieldset>
+          </div>
+          <div id="inner_shadow" class="menu">
+            <fieldset>
+              <legend>Structure</legend>
+              <!--
+              <div class="field">
+                <label>Blend Mode:</label>
+                <select id="ins_blend_mode">
+                  <option>Multiply</option>
+                </select>
+              </div>
+              -->
+              <div class="field">
+                <label>Opacity:</label>
+                <input type="range" id="ins_opacity_range" value="75" />
+                <!-- <input type="text" id="ins_opacity_num" /> -->
+              </div>
+              <!--
+              <div class="field">
+                <label>Angle:</label>
+                <input type="text" id="ins_angle_num" />
+              </div>
+              <div class="field">
+                <label>Use global Light</label>
+                <input type="checkbox" id="ins_global_light" checked />
+              </div>
+              -->
+              <div class="field">
+                <label>Distance:</label>
+                <input type="range" id="ins_distance_range" value="5" />
+                <!-- <input type="text" id="ins_distance_num" /> -->
+              </div>
+              <div class="field">
+                <label>Choke:</label>
+                <input type="range" id="ins_choke_range" value="0" />
+                <!-- <input type="text" id="ins_choke_num" /> -->
+              </div>
+              <div class="field">
+                <label>Size:</label>
+                <input type="range" id="ins_size_range" value="5" />
+                <!-- <input type="text" id="ins_size_num" /> -->
+              </div>
+            </fieldset>
+          </div>
+          <div id="stroke" class="menu">
+            <fieldset>
+              <legend>Structure</legend>
+              <div class="field">
+                <label>Size:</label>
+                <input type="range" id="str_size_range" value="3" />
+                <!-- <input type="text" id="str_size_num" /> -->
+              </div>
+              <div class="field">
+                <label>Position</label>
+                <select id="str_position">
+                  <option value="outline">Outside</option>
+                  <option value="border">Inside</option>
+                  <!--<option>Center</option>-->
+                </select>
+              </div>
+              <!--
+              <div class="field">
+                <label>Blend Mode:</label>
+                <select id="str_blendmode">
+                </select>
+              </div>
+              -->
+              <div class="field">
+                <label>Opacity:</label>
+                <input type="range" id="str_opacity_range" value="100" />
+                <!-- <input type="text" id="str_opacity_num" /> -->
+              </div>
+            </fieldset>
+          </div>
+          <div id="color_overlay" class="menu">
+            <fieldset>
+              <legend>Structure</legend>
+              <!--
+              <div class="field">
+                <label>Blend Mode:</label>
+                <select id="co_blendmode">
+                </select>
+              </div>
+              -->
+              <div class="field">
+                <label>Opacity:</label>
+                <input type="range" id="co_opacity_range" value="100" />
+                <!-- <input type="text" id="co_opacity_num" /> -->
+              </div>
+            </fieldset>
+          </div>
+          <div id="pattern_overlay" class="menu">
+            <fieldset>
+              <legend>Structure</legend>
+              <!--
+              <div class="field">
+                <label>Blend Mode:</label>
+                <select id="po_blendmode">
+                </select>
+              </div>
+              -->
+              <!--
+              <div class="field">
+                <label>Opacity:</label>
+                <input type="range" id="po_opacity_range" value="100" />
+                <input type="text" id="po_opacity_num" />
+              </div>
+              -->
+              <div class="field">
+                <label>Pattern:</label>
+                <select id="po_pattern">
+                  <option value="p1">Cross</option>
+                </select>
+              </div>
+              <!--
+              <div class="field">
+                <label>Scale:</label>
+                <input type="range" id="po_scale_range" value="100" />
+                <input type="text" id="po_scale_num" />
+              </div>
+              -->
+            </fieldset>
+          </div>
         </section>
-        <section id="output" class="panel">
-        </section>
-      </div>
+      </section>
+
+      <textarea id="code_output"></textarea>
 
     </div>
 

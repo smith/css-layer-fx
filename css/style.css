@@ -204,17 +204,14 @@ h1 {
   width: 100px;
 }
 
-#panels {
+#fx {
+  -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
   float: right;
   font-family: "Lucida Grande", "Lucida Sans", helvetica, arial, sans-serif;
   position: relative;
   width: 470px;
 }
-
- #fx {
-   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
-   box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
- }
 
 #fx h3 {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cfcfcf), color-stop(100%, #a8a8a8));
@@ -290,8 +287,17 @@ legend {
   background: #b5d5ff;
 }
 
-
-
+#code_output {
+  background: #ccc;
+  border: 0;
+  float: left;
+  font-family: Inconsolata, 'Lucida Console', Courier, monospace;
+  min-height: 100px;
+  margin: 20px 0;
+  padding: 10px;
+  resize: none;
+  width: 940px;
+}
 
 
 /**

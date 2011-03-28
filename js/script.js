@@ -33,6 +33,19 @@ var e = $("#element");
     });
 })(jQuery);
 
+// Blending Options
+(function($){
+    
+    var opacity;
+
+    // Fx
+    $("#bo_opacity_range").bind("change", function(){
+        opacity = $("#bo_opacity_range").val() * 0.01;
+        e.css("opacity", opacity);
+    });
+    
+})(jQuery);
+
 // Drop Shadow
 (function($){
     

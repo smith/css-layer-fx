@@ -2,8 +2,9 @@
  *
  * TODO:
  *   Change Choke/Spread to % of ??
+ *   Convert rgba() ro hsla()
  *   Add Quality Fieldset
- *   Blend Modes
+ *   Blend Modes?
  *   Text inputs for sliders
  *   Global Light
  *   Angles
@@ -21,10 +22,13 @@ var e = $("#element");
 (function($){
     $("nav li").bind("click", function(){
         var t = $(this);
+        var m = t.attr("data-fx");
         if (t.hasClass("active")) {
             t.removeClass("active");
+            $("#" + m).hide();
         } else {
             t.addClass("active");
+            $("#" + m).show();
         }
     });
 })(jQuery);

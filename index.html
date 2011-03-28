@@ -24,6 +24,7 @@
 
 
   <!-- CSS: implied media="all" -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Six+Caps">
   <link rel="stylesheet" href="css/style.css?v=2">
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
@@ -39,35 +40,37 @@
   <div id="container">
 
     <header>
-
+      <h1>CSS Layer Fx</h1>
     </header>
 
     <div id="main" role="main">
 
-      <div id="element"></div>
+      <div id="element_container">
+        <div id="element"></div>
+      </div>
 
       <div id="panels">
         <section id="fx" class="panel">
           <h3>Layer Style</h3>
           <nav>
             <ul>
-              <li>
+              <li data-fx="drop_shadow">
                 <input type="checkbox" id="ds_enabled" />
                 <label for="ds_enabled">Drop Shadow</label>
               </li>
-              <li>
+              <li data-fx="inner_shadow">
                 <input type="checkbox" id="ins_enabled" />
                 <label for="ins_enabled">Inner Shadow</label>
               </li>
-              <li>
+              <li data-fx="stroke">
                 <input type="checkbox" id="str_enabled" />
                 <label for="str_enabled">Stroke</label>
               </li>
-              <li>
+              <li data-fx="color_overlay">
                 <input type="checkbox" id="co_enabled" />
                 <label for="co_enabled">Color Overlay</label>
               </li>
-              <li>
+              <li data-fx="pattern_overlay">
                 <input type="checkbox" id="po_enabled" />
                 <label for="po_enabled">Pattern Overlay</label>
               </li>

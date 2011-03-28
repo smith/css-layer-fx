@@ -172,96 +172,123 @@ a:hover { color: #036; }
  * Author: Daniel Marino
  */
 
- body {
-   background: url(../img/bg.png) repeat;
-   font-family: "Lucida Grande", "Lucida Sans", helvetica, arial, sans-serif;
- }
+header {
+  margin: 40px 0;
+}
 
- #element {
-   background: red;
-   height: 100px;
-   margin: 50px;
-   width: 100px;
- }
+h1 {
+  font-family: "Six Caps", arial, serif;
+  font-size: 60px;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+}
 
- #panels {
-   position: absolute;
-   right: 20px;
-   top: 20px;
-   width: 596px;
- }
+#container {
+  margin: 0 auto;
+  width: 960px;
+}
+
+#element_container {
+  background: url(../img/bg.png);
+  border: 1px solid #ccc;
+  float: left;
+  padding: 50px;
+  width: 368px;
+}
+
+#element {
+  background: red;
+  height: 100px;
+  margin: 0 auto;
+  width: 100px;
+}
+
+#panels {
+  float: right;
+  font-family: "Lucida Grande", "Lucida Sans", helvetica, arial, sans-serif;
+  position: relative;
+  width: 470px;
+}
 
  #fx {
-   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, .75);
-   box-shadow: 0 5px 15px rgba(0, 0, 0, .75);
+   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
+   box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
  }
 
- #fx h3 {
-   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cfcfcf), color-stop(100%, #a8a8a8));
-   background: -moz-linear-gradient(top, #cfcfcf 0%, #a8a8a8 100%);
-   border-bottom: 1px solid #515151;
-   border-top: 1px solid #e2e2e2;
-   -moz-border-radius-topleft: 5px;
-   -moz-border-radius-topright: 5px;
-   border-top-left-radius: 5px;
-   border-top-right-radius: 5px;
-   font-size: 12px;
-   font-weight: normal;
-   height: 20px;
-   line-height: 20px;
-   margin: 0;
-   text-align: center;
-   text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
- }
+#fx h3 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cfcfcf), color-stop(100%, #a8a8a8));
+  background: -moz-linear-gradient(top, #cfcfcf 0%, #a8a8a8 100%);
+  border-bottom: 1px solid #515151;
+  border-top: 1px solid #e2e2e2;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 12px;
+  font-weight: normal;
+  height: 20px;
+  line-height: 20px;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+}
 
- #properties {
-   background: #ededed;
-   height: 432px;
-   padding: 10px 10px 10px 162px;
-   z-index: 1;
- }
+#properties {
+  background: #ededed;
+  min-height: 162px;
+  padding: 10px 10px 10px 162px;
+  z-index: 1;
+}
 
- nav {
-   left: 0;
-   padding: 10px;
-   position: absolute;
-   top: 30px;
-   width: 132px;
-   z-index: 2;
- }
+nav {
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  width: 132px;
+  z-index: 2;
+}
 
- nav ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
- }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
- nav li {
-   border-bottom: 1px solid #fff;
-   padding: 0 5px;
- }
+nav li {
+  border-bottom: 1px solid #fff;
+  padding: 1px 5px 3px;
+}
 
- label,
- legend {
-   font-size: 9px;
- }
+.menu {
+  display: none;
+}
 
- legend {
-   font-weight: bold;
- }
+label,
+legend {
+  font-size: 10px;
+}
 
- .active {
-   background: #b5d5ff;
- }
+fieldset {
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  padding: 5px 10px;
+}
 
+legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
 
+.field {
+  margin-bottom: 5px;
+  padding: 0 5px;
+}
 
-
-
-
-
-
-
+.active {
+  background: #b5d5ff;
+}
 
 
 

@@ -14,6 +14,9 @@
 
 var e = $("#element");
 
+// Try to come up with a base function to control some of this stuff...
+// function doSomething(fx, options) {}
+
 // Show selected effect
 (function($){
     $("nav li").bind("click", function(){
@@ -30,7 +33,8 @@ var e = $("#element");
 (function($){
     
     var opacity, distance, spread, size;
-    
+
+    // Enabled?
     $("#ds_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
             opacity = $("#ds_opacity_range").val() * 0.01;
@@ -51,46 +55,13 @@ var e = $("#element");
         }
     });
 
-    // Opacity
-    $("#ds_opacity_range").bind("change", function(){
+    // Fx
+    $("#ds_opacity_range, #ds_distance_range, #ds_spread_range, #ds_size_range").bind("change", function(){
         if ($("#ds_enabled").is(":checked")) {
-            opacity = $(this).val() * 0.01;
-            e.css({
-                "-webkit-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
-            });
-        }
-    });
-
-    // Distance
-    $("#ds_distance_range").bind("change", function(){
-        if ($("#ds_enabled").is(":checked")) {
-            distance = $(this).val();
-            e.css({
-                "-webkit-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
-            });
-        }
-    });
-
-    // Spread
-    $("#ds_spread_range").bind("change", function(){
-        if ($("#ds_enabled").is(":checked")) {
-            spread = $(this).val();
-            e.css({
-                "-webkit-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
-            });
-        }
-    });
-    
-    // Size
-    $("#ds_size_range").bind("change", function(){
-        if ($("#ds_enabled").is(":checked")) {
-            size = $(this).val();
+            opacity = $("#ds_opacity_range").val() * 0.01;
+            distance = $("#ds_distance_range").val();
+            spread = $("#ds_spread_range").val();
+            size = $("#ds_size_range").val();
             e.css({
                 "-webkit-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
                 "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
@@ -106,6 +77,7 @@ var e = $("#element");
     
     var opacity, distance, choke, size;
     
+    // Enabled?
     $("#ins_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
             opacity = $("#ins_opacity_range").val() * 0.01;
@@ -126,46 +98,13 @@ var e = $("#element");
         }
     });
 
-    // Opacity
-    $("#ins_opacity_range").bind("change", function(){
+    // Fx
+    $("#ins_opacity_range, #ins_distance_range, #ins_choke_range, #ins_size_range").bind("change", function(){
         if ($("#ins_enabled").is(":checked")) {
-            opacity = $(this).val() * 0.01;
-            e.css({
-                "-webkit-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
-            });
-        }
-    });
-
-    // Distance
-    $("#ins_distance_range").bind("change", function(){
-        if ($("#ins_enabled").is(":checked")) {
-            distance = $(this).val();
-            e.css({
-                "-webkit-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
-            });
-        }
-    });
-
-    // Choke
-    $("#ins_choke_range").bind("change", function(){
-        if ($("#ins_enabled").is(":checked")) {
-            choke = $(this).val();
-            e.css({
-                "-webkit-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
-            });
-        }
-    });
-    
-    // Size
-    $("#ins_size_range").bind("change", function(){
-        if ($("#ins_enabled").is(":checked")) {
-            size = $(this).val();
+            opacity = $("#ins_opacity_range").val() * 0.01;
+            distance = $("#ins_distance_range").val();
+            choke = $("#ins_choke_range").val();
+            size = $("#ins_size_range").val();
             e.css({
                 "-webkit-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
                 "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
@@ -181,6 +120,7 @@ var e = $("#element");
     
     var size, position, opacity;
     
+    // Enabled?
     $("#str_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
             size = $("#str_size_range").val();

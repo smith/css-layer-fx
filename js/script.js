@@ -1,7 +1,6 @@
 /*
  *
  * TODO:
- *   Change Choke/Spread to % of ??
  *   Convert rgba() ro hsla()
  *   Add Quality Fieldset
  *   Blend Modes?
@@ -9,6 +8,8 @@
  *   Global Light
  *   Angles
  *   Change Colors for Color Overlay, Drop Shadows, Inner Shadows, Strokes
+ *   Make updateCode() work way better
+ *   Fixed decimal places to 2 digits
  *
  */
 
@@ -17,6 +18,11 @@ var e = $("#element");
 
 // Try to come up with a base function to control some of this stuff...
 // function doSomething(fx, options) {}
+
+// Update the textarea with generated code
+function updateCode() {
+   $("#code_output").val(e.attr("style"));
+}
 
 // Show selected effect
 (function($){
@@ -56,20 +62,20 @@ var e = $("#element");
         if ($(this).is(":checked")) {
             opacity = $("#ds_opacity_range").val() * 0.01;
             distance = $("#ds_distance_range").val();
-            spread = $("#ds_spread_range").val();
+            // Spread is a percentage of distance
+            spread = distance * ($("#ds_spread_range").val() * 0.01);
             size = $("#ds_size_range").val();
             e.css({
-                "-webkit-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
                 "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
                 "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
             });
         } else {
             e.css({
-                "-webkit-box-shadow" : "none",
                 "-moz-box-shadow" : "none",
                 "box-shadow" : "none"
             });
         }
+        updateCode();
     });
 
     // Fx
@@ -77,13 +83,14 @@ var e = $("#element");
         if ($("#ds_enabled").is(":checked")) {
             opacity = $("#ds_opacity_range").val() * 0.01;
             distance = $("#ds_distance_range").val();
-            spread = $("#ds_spread_range").val();
+            // Spread is a percentage of distance
+            spread = distance * ($("#ds_spread_range").val() * 0.01);
             size = $("#ds_size_range").val();
             e.css({
-                "-webkit-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
                 "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
                 "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
             });
+            updateCode();
         }
     });
     
@@ -99,16 +106,15 @@ var e = $("#element");
         if ($(this).is(":checked")) {
             opacity = $("#ins_opacity_range").val() * 0.01;
             distance = $("#ins_distance_range").val();
-            choke = $("#ins_choke_range").val();
+            // Choke is a percentage of distance
+            choke = distance * ($("#ins_choke_range").val() * 0.01);
             size = $("#ins_size_range").val();
             e.css({
-                "-webkit-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
                 "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
                 "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
             });
         } else {
             e.css({
-                "-webkit-box-shadow" : "none",
                 "-moz-box-shadow" : "none",
                 "box-shadow" : "none"
             });
@@ -120,10 +126,10 @@ var e = $("#element");
         if ($("#ins_enabled").is(":checked")) {
             opacity = $("#ins_opacity_range").val() * 0.01;
             distance = $("#ins_distance_range").val();
-            choke = $("#ins_choke_range").val();
+            // Choke is a percentage of distance
+            choke = distance * ($("#ins_choke_range").val() * 0.01);
             size = $("#ins_size_range").val();
             e.css({
-                "-webkit-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
                 "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
                 "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
             });

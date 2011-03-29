@@ -1,7 +1,6 @@
 /*
  *
  * TODO:
- *   Convert rgba() ro hsla()
  *   Add Quality Fieldset
  *   Blend Modes?
  *   Text inputs for sliders
@@ -66,8 +65,8 @@ function updateCode() {
             spread = distance * ($("#ds_spread_range").val() * 0.01);
             size = $("#ds_size_range").val();
             e.css({
-                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
+                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")",
+                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
         } else {
             e.css({
@@ -87,8 +86,8 @@ function updateCode() {
             spread = distance * ($("#ds_spread_range").val() * 0.01);
             size = $("#ds_size_range").val();
             e.css({
-                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px rgba(0, 0, 0, " + opacity + ")"
+                "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")",
+                "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
             updateCode();
         }
@@ -110,8 +109,8 @@ function updateCode() {
             choke = distance * ($("#ins_choke_range").val() * 0.01);
             size = $("#ins_size_range").val();
             e.css({
-                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
+                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")",
+                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
         } else {
             e.css({
@@ -130,8 +129,8 @@ function updateCode() {
             choke = distance * ($("#ins_choke_range").val() * 0.01);
             size = $("#ins_size_range").val();
             e.css({
-                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")",
-                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px rgba(0, 0, 0, " + opacity + ")"
+                "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")",
+                "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
         }
     });
@@ -149,7 +148,7 @@ function updateCode() {
             size = $("#str_size_range").val();
             opacity = $("#str_opacity_range").val() * 0.01;
             position = "outline";
-            e.css(position, size + "px solid rgba(0, 0, 0, " + opacity + ")");
+            e.css(position, size + "px solid hsla(0, 100%, 50%, " + opacity + ")");
         } else {
             e.css("border", "none");
         }
@@ -170,13 +169,13 @@ function updateCode() {
             if (position === "outline") {
                 e.css({
                     "border" : "none",
-                    "outline" : size + "px solid rgba(0, 0, 0, " + opacity + ")"
+                    "outline" : size + "px solid hsla(0, 100%, 50%, " + opacity + ")"
                 });
             }
             if (position === "border") {
                 e.css({
                     "outline" : "none",
-                    "border" : size + "px solid rgba(0, 0, 0, " + opacity + ")"
+                    "border" : size + "px solid hsla(0, 100%, 50%, " + opacity + ")"
                 });
             }
         }
@@ -186,7 +185,7 @@ function updateCode() {
     $("#str_opacity_range").bind("change", function(){
         if ($("#str_enabled").is(":checked")) {
             opacity = $(this).val() * 0.01;
-            e.css(position + "-color", "rgba(0, 0, 0, " + opacity + ")");
+            e.css(position + "-color", "hsla(0, 100%, 50%, " + opacity + ")");
         }
     });
     
@@ -200,17 +199,19 @@ function updateCode() {
     $("#co_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
             opacity = $("#co_opacity_range").val() * 0.01;
-            e.css("background", "rgba(125, 125, 125, " + opacity + ")");
+            e.css("background-color", "hsla(0, 100%, 50%, " + opacity + ")");
         } else {
-            e.css("background", "none");
+            e.css("background-color", "none");
         }
+        updateCode();
     });
 
     // Opacity
     $("#co_opacity_range").bind("change", function(){
         if ($("#co_enabled").is(":checked")) {
             opacity = $(this).val() * 0.01;
-            e.css("background", "rgba(125, 125, 125, " + opacity + ")");
+            e.css("background-color", "hsla(0, 100%, 50%, " + opacity + ")");
+            updateCode();
         }
     });
     
@@ -234,12 +235,4 @@ function updateCode() {
         }
     });
 
-    // Pattern
-    $("#po_pattern").bind("change", function(){
-        if ($("#po_enabled").is(":checked")) {
-            opacity = $(this).val() * 0.01;
-            e.css("background", "rgba(125, 125, 125, " + opacity + ")");
-        }
-    });
-    
 })(jQuery);

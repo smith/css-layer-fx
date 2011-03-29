@@ -198,7 +198,7 @@ h1 {
 }
 
 #element {
-  background: red;
+  background: #ccc;
   height: 100px;
   margin: 0 auto;
   width: 100px;

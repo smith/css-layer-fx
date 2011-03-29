@@ -7,7 +7,6 @@
  *   Global Light
  *   Angles
  *   Change Colors for Color Overlay, Drop Shadows, Inner Shadows, Strokes
- *   Make updateCode() work way better
  *   Fixed decimal places to 2 digits
  *
  */
@@ -15,12 +14,35 @@
 
 var e = $("#element");
 
+var output = {
+    opacity: "",
+    dropshadow: "",
+    innershadow: "",
+    stroke: "",
+    pattern: ""
+};
+
 // Try to come up with a base function to control some of this stuff...
 // function doSomething(fx, options) {}
 
 // Update the textarea with generated code
-function updateCode() {
-   $("#code_output").val(e.attr("style"));
+function updateCode(style, code) {
+    if (style === "opacity") {
+        output.opacity = code;
+    }
+    if (style === "drop-shadow") {
+        output.dropshadow = code;
+    }
+    if (style === "inner-shadow") {
+        output.innershadow = code;
+    }
+    if (style === "stroke") {
+        output.stroke = code;
+    }
+    if (style === "pattern") {
+        output.pattern = code;
+    }
+    $("#code_output").val(output.opacity + output.dropshadow + output.innershadow + output.stroke + output.pattern);
 }
 
 // Show selected effect
@@ -47,6 +69,8 @@ function updateCode() {
     $("#bo_opacity_range").bind("change", function(){
         opacity = $("#bo_opacity_range").val() * 0.01;
         e.css("opacity", opacity);
+        o = "opacity: " + opacity + "\n";
+        updateCode("opacity", o);
     });
     
 })(jQuery);
@@ -54,7 +78,7 @@ function updateCode() {
 // Drop Shadow
 (function($){
     
-    var opacity, distance, spread, size;
+    var opacity, distance, spread, size, ds;
 
     // Enabled?
     $("#ds_enabled").bind("click", function(){
@@ -68,13 +92,15 @@ function updateCode() {
                 "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")",
                 "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
+            ds = "-moz-box-shadow: " + distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ");" + "\n" + "box-shadow: " + distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")" + "\n";
         } else {
+            ds = "";
             e.css({
                 "-moz-box-shadow" : "none",
                 "box-shadow" : "none"
             });
         }
-        updateCode();
+        updateCode("drop-shadow", ds);
     });
 
     // Fx
@@ -89,7 +115,8 @@ function updateCode() {
                 "-moz-box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")",
                 "box-shadow" : distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
-            updateCode();
+            ds = "-moz-box-shadow: " + distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ");" + "\n" + "box-shadow: " + distance + "px " + distance + "px " + size + "px " + spread + "px hsla(0, 100%, 0%, " + opacity + ")" + "\n";
+            updateCode("drop-shadow", ds);
         }
     });
     
@@ -98,7 +125,7 @@ function updateCode() {
 // Inner Shadow
 (function($){
     
-    var opacity, distance, choke, size;
+    var opacity, distance, choke, size, is;
     
     // Enabled?
     $("#ins_enabled").bind("click", function(){
@@ -112,12 +139,15 @@ function updateCode() {
                 "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")",
                 "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
+            is = "-moz-box-shadow: inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")" + "\n" + "box-shadow: inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ");" + "\n";
         } else {
             e.css({
                 "-moz-box-shadow" : "none",
                 "box-shadow" : "none"
             });
+            is = "";
         }
+        updateCode("inner-shadow", is);
     });
 
     // Fx
@@ -132,6 +162,8 @@ function updateCode() {
                 "-moz-box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")",
                 "box-shadow" : "inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")"
             });
+            is = "-moz-box-shadow: inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ")" + "\n" + "box-shadow: inset " + distance + "px " + distance + "px " + size + "px " + choke + "px hsla(0, 100%, 0%, " + opacity + ");" + "\n";
+        updateCode("inner-shadow", is);
         }
     });
     

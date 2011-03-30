@@ -9,6 +9,9 @@
  *   Change Colors for Color Overlay, Drop Shadows, Inner Shadows, Strokes
  *   Fixed decimal places to 2 digits
  *
+ * SECONDARY TODO:
+ *   Better/leaner updateCode() function
+ *   Function to handle the changing of the css - not individual style functions if avoidable
  */
 
 
@@ -19,11 +22,9 @@ var output = {
     dropshadow: "",
     innershadow: "",
     stroke: "",
+    bgcolor: "",
     pattern: ""
 };
-
-// Try to come up with a base function to control some of this stuff...
-// function doSomething(fx, options) {}
 
 // Update the textarea with generated code
 function updateCode(style, code) {
@@ -39,10 +40,13 @@ function updateCode(style, code) {
     if (style === "stroke") {
         output.stroke = code;
     }
+    if (style === "bgcolor") {
+        output.bgcolor = code;
+    }
     if (style === "pattern") {
         output.pattern = code;
     }
-    $("#code_output").val(output.opacity + output.dropshadow + output.innershadow + output.stroke + output.pattern);
+    $("#code_output").val(output.opacity + output.dropshadow + output.innershadow + output.stroke + output.bgcolor + output.pattern);
 }
 
 // Show selected effect
@@ -60,16 +64,20 @@ function updateCode(style, code) {
     });
 })(jQuery);
 
-// Blending Options
+// Opacity
 (function($){
     
     var opacity;
 
     // Fx
     $("#bo_opacity_range").bind("change", function(){
-        opacity = $("#bo_opacity_range").val() * 0.01;
-        e.css("opacity", opacity);
-        o = "opacity: " + opacity + "\n";
+        opacity = ($("#bo_opacity_range").val() * 0.01).toFixed(2);
+        if (opacity < 1) {
+            e.css("opacity", opacity);
+            o = "opacity: " + opacity + "\n";
+        } else {
+            o = "";
+        }
         updateCode("opacity", o);
     });
     
@@ -83,7 +91,7 @@ function updateCode(style, code) {
     // Enabled?
     $("#ds_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
-            opacity = $("#ds_opacity_range").val() * 0.01;
+            opacity = ($("#ds_opacity_range").val() * 0.01).toFixed(2);
             distance = $("#ds_distance_range").val();
             // Spread is a percentage of distance
             spread = distance * ($("#ds_spread_range").val() * 0.01);
@@ -106,7 +114,7 @@ function updateCode(style, code) {
     // Fx
     $("#ds_opacity_range, #ds_distance_range, #ds_spread_range, #ds_size_range").bind("change", function(){
         if ($("#ds_enabled").is(":checked")) {
-            opacity = $("#ds_opacity_range").val() * 0.01;
+            opacity = ($("#ds_opacity_range").val() * 0.01).toFixed(2);
             distance = $("#ds_distance_range").val();
             // Spread is a percentage of distance
             spread = distance * ($("#ds_spread_range").val() * 0.01);
@@ -130,7 +138,7 @@ function updateCode(style, code) {
     // Enabled?
     $("#ins_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
-            opacity = $("#ins_opacity_range").val() * 0.01;
+            opacity = ($("#ins_opacity_range").val() * 0.01).toFixed(2);
             distance = $("#ins_distance_range").val();
             // Choke is a percentage of distance
             choke = distance * ($("#ins_choke_range").val() * 0.01);
@@ -153,7 +161,7 @@ function updateCode(style, code) {
     // Fx
     $("#ins_opacity_range, #ins_distance_range, #ins_choke_range, #ins_size_range").bind("change", function(){
         if ($("#ins_enabled").is(":checked")) {
-            opacity = $("#ins_opacity_range").val() * 0.01;
+            opacity = ($("#ins_opacity_range").val() * 0.01).toFixed(2);
             distance = $("#ins_distance_range").val();
             // Choke is a percentage of distance
             choke = distance * ($("#ins_choke_range").val() * 0.01);
@@ -172,18 +180,21 @@ function updateCode(style, code) {
 // Stroke
 (function($){
     
-    var size, position, opacity;
+    var size, position, opacity, s;
     
     // Enabled?
     $("#str_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
             size = $("#str_size_range").val();
-            opacity = $("#str_opacity_range").val() * 0.01;
+            opacity = ($("#str_opacity_range").val() * 0.01).toFixed(2);
             position = "outline";
             e.css(position, size + "px solid hsla(0, 100%, 50%, " + opacity + ")");
+            s = position + ": " + size + "px solid hsla(0, 100%, 50%, " + opacity + ");" + "\n";
         } else {
-            e.css("border", "none");
+            e.css(position, "none");
+            s = "";
         }
+        updateCode("stroke", s);
     });
 
     // Size
@@ -191,6 +202,8 @@ function updateCode(style, code) {
         if ($("#str_enabled").is(":checked")) {
             size = $(this).val();
             e.css(position + "-width", size + "px");
+            s = position + ": " + size + "px solid hsla(0, 100%, 50%, " + opacity + ");" + "\n";
+            updateCode("stroke", s);
         }
     });
 
@@ -210,14 +223,18 @@ function updateCode(style, code) {
                     "border" : size + "px solid hsla(0, 100%, 50%, " + opacity + ")"
                 });
             }
+            s = position + ": " + size + "px solid hsla(0, 100%, 50%, " + opacity + ");" + "\n";
+            updateCode("stroke", s);
         }
     });
 
     // Opacity
     $("#str_opacity_range").bind("change", function(){
         if ($("#str_enabled").is(":checked")) {
-            opacity = $(this).val() * 0.01;
+            opacity = ($("#str_opacity_range").val() * 0.01).toFixed(2);
             e.css(position + "-color", "hsla(0, 100%, 50%, " + opacity + ")");
+            s = position + ": " + size + "px solid hsla(0, 100%, 50%, " + opacity + ");" + "\n";
+            updateCode("stroke", s);
         }
     });
     
@@ -226,24 +243,27 @@ function updateCode(style, code) {
 // Color Overlay
 (function($){
     
-    var opacity;
+    var opacity, o;
     
     $("#co_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
-            opacity = $("#co_opacity_range").val() * 0.01;
+            opacity = ($("#co_opacity_range").val() * 0.01).toFixed(2);
             e.css("background-color", "hsla(0, 100%, 50%, " + opacity + ")");
+            c = "background-color: hsla(0, 100%, 50%, " + opacity + ")" + "\n";
         } else {
-            e.css("background-color", "none");
+            e.css("background-color", "transparent");
+            c = "";
         }
-        updateCode();
+        updateCode("bgcolor", c);
     });
 
     // Opacity
     $("#co_opacity_range").bind("change", function(){
         if ($("#co_enabled").is(":checked")) {
-            opacity = $(this).val() * 0.01;
+            opacity = ($("#co_opacity_range").val() * 0.01).toFixed(2);
             e.css("background-color", "hsla(0, 100%, 50%, " + opacity + ")");
-            updateCode();
+            c = "background-color: hsla(0, 100%, 50%, " + opacity + ")" + "\n";
+            updateCode("bgcolor", c);
         }
     });
     
@@ -252,19 +272,21 @@ function updateCode(style, code) {
 // Pattern Overlay
 (function($){
     
-    var opacity, pattern, scale;
+    var opacity, pattern, scale, p;
     
     $("#po_enabled").bind("click", function(){
         if ($(this).is(":checked")) {
-            opacity = $("#po_opacity_range").val() * 0.01;
             //pattern = $("#po_pattern").val();
             // Temp
             pattern = "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGZJREFUeNqU0UsOACEIA1Ds/e/sUCcmBkErS+SFj83MukezxwCRR39BrIf9LWXMOtZjJhQ80Rh1fTjhFW2wwhGlMOIMjbwnpZ2277ihamfcOlUYyngZhrpTxFBQem1eVUFxsk+AAQAFDmUXbxh5bAAAAABJRU5ErkJggg==";
             scale = $("#po_scale_range").val() * 0.01;
-            e.css("background", 'url("data:image/png;base64,' + pattern + '") 50% 50% repeat');
+            e.css("background-image", 'url("data:image/png;base64,' + pattern + '")');
+            p = 'background-image: url("data:image/png;base64,' + pattern + '")' + "\n";
         } else {
-            e.css("background", "none");
+            e.css("background-image", "none");
+            p = "";
         }
+        updateCode("pattern", p);
     });
 
 })(jQuery);

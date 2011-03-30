@@ -13,7 +13,7 @@
  *   Better/leaner updateCode() function
  *   Function to handle the changing of the css - not individual style functions if avoidable
  */
-
+define(function () {
 
 var e = $("#element");
 
@@ -290,3 +290,5 @@ function updateCode(style, code) {
     });
 
 })(jQuery);
+
+});

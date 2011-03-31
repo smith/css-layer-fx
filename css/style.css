@@ -134,8 +134,8 @@ input[type="search"] {
 /* These selection declarations have to be separate
    No text-shadow: twitter.com/miketaylr/status/12228805301
    Also: hot pink! */
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+::-moz-selection{ background: #fffbaf; color: #444; text-shadow: none; }
+::selection { background: #fffbaf; color: #444; text-shadow: none; }
 
 /* j.mp/webkit-tap-highlight-color */
 a:link { -webkit-tap-highlight-color: #FF5E99; }
@@ -162,8 +162,8 @@ body, select, input, textarea {
 /* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #fffbaf; }
+a:hover { color: #fffbaf; }
 
 
 /**
@@ -172,16 +172,28 @@ a:hover { color: #036; }
  * Author: Daniel Marino
  */
 
-header {
-  margin: 40px 0;
+body {
+  background: url(../img/bg.png) repeat;
+  color: #fff;
+  font-family: helvetica, arial, sans-serif;
+}
+
+hgroup {
+  margin: 50px 0;
+  text-align: center;
 }
 
 h1 {
-  font-family: "Six Caps", arial, serif;
-  font-size: 60px;
-  font-weight: normal;
-  text-align: center;
+  color: #78cef6;
+  font-family: "Josefin Sans";
+  font-size: 48px;
+  font-weight: 300;
   text-transform: uppercase;
+}
+
+h2 {
+  font-family: "Droid Serif";
+  font-weight: normal;
 }
 
 #container {
@@ -189,114 +201,19 @@ h1 {
   width: 960px;
 }
 
-#element_container {
-  background: url(../img/bg.png);
-  border: 1px solid #ccc;
-  float: left;
-  padding: 50px;
-  width: 368px;
-}
-
-#element {
-  background: #ccc;
-  height: 100px;
-  margin: 0 auto;
-  width: 100px;
-}
-
-#fx {
-  -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, .25);
-  float: right;
-  font-family: "Lucida Grande", "Lucida Sans", helvetica, arial, sans-serif;
-  position: relative;
-  width: 470px;
-}
-
-#fx h3 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cfcfcf), color-stop(100%, #a8a8a8));
-  background: -moz-linear-gradient(top, #cfcfcf 0%, #a8a8a8 100%);
-  border-bottom: 1px solid #515151;
-  border-top: 1px solid #e2e2e2;
-  -moz-border-radius-topleft: 5px;
-  -moz-border-radius-topright: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  font-size: 12px;
-  font-weight: normal;
-  height: 20px;
-  line-height: 20px;
-  margin: 0;
-  text-align: center;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
-}
-
-#properties {
-  background: #ededed;
-  min-height: 162px;
-  padding: 10px 10px 10px 162px;
-  z-index: 1;
-}
-
-nav {
-  left: 0;
-  padding: 10px;
-  position: absolute;
-  top: 30px;
-  width: 132px;
-  z-index: 2;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  border-bottom: 1px solid #fff;
-  padding: 1px 5px 3px;
-}
-
-.menu {
-  display: none;
-}
-
-label,
-legend {
-  font-size: 10px;
-}
-
-fieldset {
-  border: 1px solid #ccc;
-  margin-top: 5px;
-  padding: 5px 10px;
-}
-
-legend {
-  font-weight: bold;
-  padding: 0 5px;
-}
-
-.field {
-  margin-bottom: 5px;
-  padding: 0 5px;
-}
-
-.active {
-  background: #b5d5ff;
-}
-
-#code_output {
-  background: #ccc;
+.panel {
+  background: hsla(0, 100%, 100%, .1);
   border: 0;
   float: left;
-  font-family: Inconsolata, 'Lucida Console', Courier, monospace;
-  min-height: 100px;
-  margin: 20px 0;
-  padding: 10px;
+  margin: 0 10px 20px;
+  padding: 20px;
+  position: relative;
+  width: 420px;
+}
+
+#the_friggin_code {
   resize: none;
-  width: 940px;
+  width: 900px;
 }
 
 

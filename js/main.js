@@ -13,7 +13,15 @@
  *   Better/leaner updateCode() function
  *   Function to handle the changing of the css - not individual style functions if avoidable
  */
-define(function () {
+
+//Configure RequireJS
+require({
+    //Load jQuery before any other scripts, since jQuery plugins normally
+    //assume jQuery is already loaded in the page.
+    priority: ['jquery']
+});
+
+require(['jquery'], function ($) {
 
 var e = $("#element");
 
